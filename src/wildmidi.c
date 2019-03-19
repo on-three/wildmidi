@@ -126,7 +126,10 @@ static int msleep(unsigned long millisec);
 #   include <soundcard.h> /* less common, but exists. */
 #   endif
 #elif defined AUDIODRV_OPENAL
-#   ifndef __APPLE__
+#   if defined __EMSCRIPTEN__
+#   include <AL/al.h>
+#   include <AL/alc.h>
+#   elif !defined __APPLE__
 #   include <al.h>
 #   include <alc.h>
 #   else
